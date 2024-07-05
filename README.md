@@ -41,5 +41,7 @@ export default App;
 Modify the props as needed to customize the appearance and message of OfflineBar in your application.
 
 <br>
-<h3> Below is a preview</h3>
-<img src="assets/preview.png">
+<h3> Preview</h3>
+<div style="text-align: center;">
+    <img src="assets/preview.png" alt="Preview" style="width: 50%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+</div>
