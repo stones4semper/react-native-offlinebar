@@ -39,3 +39,7 @@ export default App;
 </ul>
 
 Modify the props as needed to customize the appearance and message of OfflineBar in your application.
+
+<br>
+<h3> Below is a preview</h3>
+<img src="assets/preview.png">
