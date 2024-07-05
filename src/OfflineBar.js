@@ -1,27 +1,8 @@
 import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import { SafeAreaView, StatusBar, Animated, Easing, StyleSheet } from 'react-native';
-import { useTheme } from '@react-navigation/native';
 import NetInfo from '@react-native-community/netinfo';
 
-const createStyles = (theme) => {
-	return StyleSheet.create({
-			container: {
-			paddingTop: 16,
-		},
-		statusText: {
-			color: '#fff',
-			padding: 8,
-			textAlign: 'center',
-			fontWeight: '500',
-			fontSize: 14,
-		},
-	});
-};
-
-const OfflineBar = ({bgColor='#930F1F', title='You must connect to Wi-fi or a cellular network to get online again'}) => {
-	const theme = useTheme();
-	const styles = useMemo(() => createStyles(theme), [theme]);
-
+const OfflineBar = ({bgColor='#930F1F', color="#fff", title='You must connect to Wi-fi or a cellular network to get online again'}) => {
 	const animationConstants = useMemo(
 		() => ({
 			DURATION: 800,
@@ -78,11 +59,23 @@ const OfflineBar = ({bgColor='#930F1F', title='You must connect to Wi-fi or a ce
 	return !connected ? (
 		<SafeAreaView style={{...styles.container, backgroundColor: bgColor}}>
 			<StatusBar backgroundColor={bgColor} />
-			<Animated.Text style={[styles.offlineText, animationStyle]}>
+			<Animated.Text style={{...styles.offlineText, ...animationStyle, color:color}}>
 				{title}
 			</Animated.Text>
 		</SafeAreaView>
 	) : null;
 };
+
+const styles =  StyleSheet.create({
+	container: {
+		paddingTop: 16,
+	},
+	statusText: {
+		padding: 8,
+		textAlign: 'center',
+		fontWeight: '500',
+		fontSize: 14,
+	},
+});
 
 export default OfflineBar;
