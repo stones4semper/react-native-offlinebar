@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react'
 import { SafeAreaView, StatusBar, Animated, Easing, StyleSheet } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 
-const OfflineBar = ({bgColor='#930F1F', color="#fff", title='You must connect to Wi-fi or a cellular network to get online again'}) => {
+const OfflineBar = ({bgColor='#930F1F', color="#fff", title='Please connect to Wi-Fi or cellular data to go online.'}) => {
 	const animationConstants = useMemo(
 		() => ({
 			DURATION: 800,
@@ -55,8 +55,7 @@ const OfflineBar = ({bgColor='#930F1F', color="#fff", title='You must connect to
 		transform: [{ translateX: interpolated }],
 	};
   
-
-	return !connected ? (
+	return connected != null && !connected ? (
 		<SafeAreaView style={{...styles.container, backgroundColor: bgColor}}>
 			<StatusBar backgroundColor={bgColor} />
 			<Animated.Text style={{...styles.offlineText, ...animationStyle, color:color}}>
